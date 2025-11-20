@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Jafar</string>
+
+
+    <string name="name">유재홍</string>
+    <string name="job">Android Developer</string>
+    <string-array name="skills">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Android</item>
+    </string-array>
 </resources>
