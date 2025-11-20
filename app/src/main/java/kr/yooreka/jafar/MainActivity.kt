@@ -97,6 +97,16 @@ fun ProfileCard() {
 }
 
 @Composable
+fun ContactCard() {
+
+}
+
+@Composable
+fun SummaryCard() {
+
+}
+
+@Composable
 fun Home() {
     Column(
         modifier = Modifier
@@ -104,6 +114,8 @@ fun Home() {
             .padding(16.dp)
     ) {
         ProfileCard()
+        ContactCard()
+        SummaryCard()
     }
 }
 
