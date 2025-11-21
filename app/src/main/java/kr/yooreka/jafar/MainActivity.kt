@@ -103,7 +103,35 @@ fun ContactCard() {
 
 @Composable
 fun SummaryCard() {
-
+    Card(
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(10.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(20.dp)
+        ) {
+            Text(
+                stringResource(R.string.summary_title),
+                fontSize = 15.sp,
+                fontFamily = FontFamily.Monospace,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(Modifier.height(20.dp))
+            Text(
+                text = stringResource(R.string.summary_introduce),
+                fontSize = 19.sp,
+                fontFamily = FontFamily.Monospace,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                stringResource(R.string.summary_about_me),
+                fontSize = 16.sp,
+                fontFamily = FontFamily.Monospace,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
+    }
 }
 
 @Composable
@@ -115,6 +143,15 @@ fun Home() {
     ) {
         ProfileCard()
         ContactCard()
+        SummaryCard()
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun SummaryPreview() {
+    JafarTheme {
         SummaryCard()
     }
 }
