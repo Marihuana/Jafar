@@ -99,6 +99,19 @@ fun ProfileCard() {
 @Composable
 fun ContactCard() {
 
+@Composable
+fun ContactIcon(
+    image: Painter,
+    contentDescription: String,
+    modifier: Modifier = Modifier
+){
+    Image(
+        painter = image,
+        contentDescription = contentDescription,
+        modifier = modifier
+            .size(40.dp)
+    )
+}
 }
 
 @Composable
