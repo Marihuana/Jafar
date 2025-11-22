@@ -11,7 +11,7 @@
 - [x] 프로젝트 생성 및 기본 Gradle 설정
 - [x] README 초안 작성
 - [x] 앱 컨셉 및 핵심 기능 확정
-- [ ] UI/UX 프로토타입 구현
+- [x] UI/UX 프로토타입 구현
 - [ ] Clean Architecture 레이어 구성 완료
 - [ ] ...
 
