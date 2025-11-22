@@ -98,6 +98,46 @@ fun ProfileCard() {
 
 @Composable
 fun ContactCard() {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(10.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(20.dp)
+        ) {
+            Text(
+                stringResource(R.string.contact_title),
+                fontSize = 15.sp,
+                fontFamily = FontFamily.Monospace,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(Modifier.height(20.dp))
+
+            ContactItem(
+                image = painterResource(R.drawable.email),
+                title = stringResource(R.string.contact_mail),
+                value = stringResource(R.string.contact_mail_value),
+            )
+
+            Spacer(Modifier.height(20.dp))
+
+            ContactItem(
+                image = painterResource(R.drawable.linkedin),
+                title = stringResource(R.string.contact_linkedin),
+                value = stringResource(R.string.contact_linkedin_value),
+            )
+
+            Spacer(Modifier.height(20.dp))
+
+            ContactItem(
+                image = painterResource(R.drawable.github),
+                title = stringResource(R.string.contact_github),
+                value = stringResource(R.string.contact_github_value),
+            )
+        }
+    }
+}
 
 @Composable
 fun ContactIcon(
