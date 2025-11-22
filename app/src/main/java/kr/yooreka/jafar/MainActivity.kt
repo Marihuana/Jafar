@@ -112,6 +112,43 @@ fun ContactIcon(
             .size(40.dp)
     )
 }
+
+@Composable
+fun ContactItem(
+    image: Painter,
+    title : String,
+    value : String,
+){
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 2.dp, bottom = 2.dp)
+    ) {
+        val (iconRef, titleRef, valueRef) = createRefs()
+        createVerticalChain(titleRef, valueRef, chainStyle = ChainStyle.SpreadInside)
+        ContactIcon(
+            image = image,
+            contentDescription = title,
+            modifier = Modifier.constrainAs(iconRef){
+                top.linkTo(parent.top)
+                bottom.linkTo(parent.bottom)
+                start.linkTo(parent.start)
+            }
+        )
+        Text(
+            text = title,
+            modifier = Modifier.constrainAs(titleRef){
+                start.linkTo(iconRef.end, margin = 12.dp)
+            }
+        )
+        Text(
+            text = value,
+            modifier = Modifier.constrainAs(valueRef){
+                start.linkTo(iconRef.end, margin = 12.dp)
+            }
+        )
+
+    }
 }
 
 @Composable
