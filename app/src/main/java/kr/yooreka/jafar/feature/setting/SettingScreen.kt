@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SettingScreen(){
+fun SettingScreen(
+    uiState: SettingUiState = SettingUiState()
+){
     Text(
         "저는..알지?"
     )

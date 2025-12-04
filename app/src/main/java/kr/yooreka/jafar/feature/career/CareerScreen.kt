@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun CareerScreen() {
+fun CareerScreen(
+    uiState: CareerUiState = CareerUiState()
+) {
     Text(
         "저는 경력 화면입니다."
     )
