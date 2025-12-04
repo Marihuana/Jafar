@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Jafar</string>
 
+    <string name="nav_profile">홈</string>
+    <string name="nav_career">경력</string>
+    <string name="nav_portfolio">포트폴리오</string>
+    <string name="nav_setting">설정</string>
+
     <string name="profile_title">프로필</string>
     <string name="profile_name">유재홍</string>
     <string name="profile_position">Android Developer</string>
