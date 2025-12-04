@@ -14,22 +14,22 @@ enum class TopLevelNavItem(
     @DrawableRes val iconRes: Int
 ) {
     PROFILE(
-        route = "profileRoute",
+        route = profileRoute,
         labelRes = R.string.nav_profile,
         iconRes = R.drawable.ic_profile
     ),
     CAREER(
-        route = "careerRoute",
+        route = careerRoute,
         labelRes = R.string.nav_career,
         iconRes = R.drawable.ic_career
     ),
     PORTFOLIO(
-        route = "portfolioRoute",
+        route = portfolioRoute,
         labelRes = R.string.nav_portfolio,
         iconRes = R.drawable.ic_portfolio
     ),
     SETTING(
-        route = "settingRoute",
+        route = settingRoute,
         labelRes = R.string.nav_setting,
         iconRes = R.drawable.ic_setting
     )

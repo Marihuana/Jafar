@@ -2,8 +2,8 @@ package kr.yooreka.jafar.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import kr.yooreka.jafar.feature.career.navigation.careerScreen
 import kr.yooreka.jafar.feature.portfolio.navigation.portfolioScreen
 import kr.yooreka.jafar.feature.profile.navigation.profileScreen
@@ -20,6 +20,9 @@ fun JafarNavHost(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        // TODO: Add screens here
+        profileScreen(navController)
+        careerScreen(navController)
+        portfolioScreen(navController)
+        settingScreen(navController)
     }
 }
