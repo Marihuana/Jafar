@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun PortfolioScreen() {
+fun PortfolioScreen(
+    uiState: PortfolioUiState = PortfolioUiState()
+) {
     Text(
         "저는 포트폴리오 화면입니다."
     )

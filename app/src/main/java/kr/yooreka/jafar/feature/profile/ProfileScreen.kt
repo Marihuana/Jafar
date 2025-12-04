@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    uiState: ProfileUiState = ProfileUiState()
+) {
     Text(
         "저는 프로필 화면입니다."
     )
