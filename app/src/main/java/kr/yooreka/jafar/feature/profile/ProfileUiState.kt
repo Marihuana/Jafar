@@ -47,3 +47,8 @@ data class ContactUIState(
 data class IntroduceUIState(
     val description: String = ""
 )
+
+sealed interface ProfileEffect {
+    data class OpenMail(val address: String) : ProfileEffect
+    data class OpenUrl(val url: String) : ProfileEffect
+}
