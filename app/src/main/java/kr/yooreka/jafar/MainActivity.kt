@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
@@ -146,7 +148,15 @@ fun JafarBottomBar(
                 selected = selected,
                 onClick = { onNavigateToTopLevelDestination(destination) },
                 icon = { NavIcon(selected, navItem = destination) },
-                label = { Text(text = stringResource(destination.labelRes)) }
+                label = { Text(text = stringResource(destination.labelRes)) },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = MaterialTheme.colorScheme.secondary,
+                    unselectedIconColor = MaterialTheme.colorScheme.primary,
+                    selectedTextColor = MaterialTheme.colorScheme.onSecondary,
+                    unselectedTextColor = MaterialTheme.colorScheme.onPrimary,
+                    indicatorColor = MaterialTheme.colorScheme.onSecondary
+                )
+
             )
         }
     }
@@ -182,9 +192,9 @@ fun NavIcon(
         contentDescription = stringResource(navItem.labelRes),
         modifier = Modifier.size(24.dp),
         tint = if (isSelected) {
-            MaterialTheme.colorScheme.primary
+            MaterialTheme.colorScheme.secondary
         } else {
-            MaterialTheme.colorScheme.onSurfaceVariant
+            MaterialTheme.colorScheme.onPrimary
         }
     )
 }

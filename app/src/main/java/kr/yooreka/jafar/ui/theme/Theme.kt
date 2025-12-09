@@ -12,15 +12,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = CardDefaultDark,
+    onPrimary = TextDefaultDark,
+    secondary = TagBgDark,
+    onSecondary = TagTextDark,
+    tertiary = CardBorderDark,
+    background = BgDefaultDark,
+    surface = BgDefaultDark,
+    onBackground = TextDefaultDark,
+    onSurface = TextDefaultDark,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = CardDefaultLight,
+    onPrimary = TextDefaultLight,
+    secondary = TagBgLight,
+    onSecondary = TagTextLight,
+    tertiary = CardBorderLight,
+    background = BgDefaultLight,
+    surface = BgDefaultLight,
+    onBackground = TextDefaultLight,
+    onSurface = TextDefaultLight,
+
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -37,7 +50,7 @@ private val LightColorScheme = lightColorScheme(
 fun JafarTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
