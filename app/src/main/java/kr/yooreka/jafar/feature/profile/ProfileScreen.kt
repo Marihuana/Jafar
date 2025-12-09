@@ -1,6 +1,7 @@
 package kr.yooreka.jafar.feature.profile
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -80,8 +81,13 @@ fun ProfileCard(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(10.dp)
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+        ),
+        border = BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.tertiary
+        ),
     ) {
         Column(
             modifier = Modifier
@@ -102,6 +108,7 @@ fun ProfileCard(
             )
             Text(
                 text = state.name,
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 16.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold
@@ -109,6 +116,7 @@ fun ProfileCard(
 
             Text(
                 text = state.position,
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 15.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Medium
@@ -120,10 +128,10 @@ fun ProfileCard(
                     Text(
                         text = item,
                         style = MaterialTheme.typography.labelSmall,
-                        color = Color(0xFF1A65FC),
+                        color = MaterialTheme.colorScheme.onSecondary,
                         modifier = Modifier
                             .background(
-                                color = Color(0xFFDAEBFF),
+                                color = MaterialTheme.colorScheme.secondary,
                                 shape = RoundedCornerShape(4.dp)
                             )
                             .padding(start = 8.dp, end = 8.dp)
@@ -144,14 +152,20 @@ fun ContactCard(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(10.dp)
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+        ),
+        border = BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.tertiary
+        ),
     ) {
         Column(
             modifier = Modifier.padding(20.dp)
         ) {
             Text(
                 stringResource(R.string.contact_title),
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 15.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold
@@ -247,12 +261,14 @@ fun ContactItem(
         Column {
             Text(
                 text = label,
+                color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.labelMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
             Text(
                 text = value,
+                color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
@@ -267,14 +283,20 @@ fun IntroduceCard(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(10.dp)
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+        ),
+        border = BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.tertiary
+        ),
     ) {
         Column(
             modifier = Modifier.padding(20.dp)
         ) {
             Text(
                 text = stringResource(R.string.introduce_title),
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 15.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold
@@ -282,6 +304,7 @@ fun IntroduceCard(
             Spacer(Modifier.height(20.dp))
             Text(
                 text = state.description,
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.bodyMedium
             )
@@ -293,27 +316,41 @@ fun IntroduceCard(
 @Preview(showBackground = true)
 @Composable
 fun ProfilePreview() {
-    ProfileCard(state = AboutMeUIState("홍길동", null, "안드로이드", listOf("java", "kotlin", "Node.js")))
+    JafarTheme() {
+        ProfileCard(
+            state = AboutMeUIState(
+                "홍길동",
+                null,
+                "안드로이드",
+                listOf("java", "kotlin", "Node.js")
+            )
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ContactsPreview() {
-    ContactCard(
-        state = ContactUIState(
-            "sdlfkjsdflkj",
-            "sdlkfjsdsdf;lksd;lfksdlfjlksdjflkjsdfjlksdfjklkfjlksdfjlksdf",
-            "lsdkfjlksdfjlksdfjlk"
+    JafarTheme {
+        ContactCard(
+            state = ContactUIState(
+                "sdlfkjsdflkj",
+                "sdlkfjsdsdf;lksd;lfksdlfjlksdjflkjsdfjlksdfjklkfjlksdfjlksdf",
+                "lsdkfjlksdfjlksdfjlk"
+            )
         )
-    )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun IntroducePreview() {
-    IntroduceCard(
-        state = IntroduceUIState("동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세. 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세")
-    )
+    JafarTheme {
+        IntroduceCard(
+            state = IntroduceUIState("동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세. 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세")
+        )
+    }
+
 }
 
 
@@ -328,6 +365,8 @@ fun HomePreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun ProfileScreenPreview() {
-    ProfileScreen()
+fun HomePreviewDark() {
+    JafarTheme(darkTheme = true) {
+        ProfileScreen()
+    }
 }
