@@ -21,6 +21,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -44,21 +48,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.rounded.DateRange
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import kr.yooreka.jafar.R
-import kr.yooreka.jafar.data.local.CareerRepositoryImpl
+import kr.yooreka.jafar.ui.theme.JafarTheme
 
 @Composable
 fun CareerScreen(
     uiState: CareerUiState = CareerUiState(isLoading = true),
 ) {
     val companies = uiState.companies
-    val selectedCompanyId = rememberSaveable { mutableStateListOf(companies.firstOrNull()?:0L) }
+    val selectedCompanyId = rememberSaveable { mutableStateListOf(companies.firstOrNull() ?: 0L) }
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -69,7 +68,7 @@ fun CareerScreen(
                 company = company,
                 expanded = selectedCompanyId.contains(company.id),
                 onClick = {
-                    if(selectedCompanyId.contains(company.id)) {
+                    if (selectedCompanyId.contains(company.id)) {
                         selectedCompanyId.remove(company.id)
                     } else
                         selectedCompanyId.add(company.id)
@@ -88,9 +87,12 @@ fun CompanyCard(
     Card(
         modifier = Modifier
             .fillMaxWidth(),
-        border = BorderStroke(1.dp, Color(0xFFE0E0E0)),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFFFFFFF)
+            containerColor = MaterialTheme.colorScheme.primary,
+        ),
+        border = BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.tertiary
         ),
         shape = RoundedCornerShape(16.dp),
         onClick = onClick
@@ -105,7 +107,8 @@ fun CompanyCard(
                 )
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .padding(16.dp)
             ) {
                 //R.drawable.ic_company를 이용해 아이콘을 만들어줘
@@ -116,18 +119,26 @@ fun CompanyCard(
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(8.dp))
-                        .background(Color(219, 234, 254, 255))
+                        .background(MaterialTheme.colorScheme.tertiary)
                         .padding(8.dp),
-                    colorFilter = ColorFilter.tint(Color(21, 93, 252, 255))
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary)
                 )
                 Spacer(Modifier.size(16.dp))
 
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text(company.name)
+                    Text(
+                        company.name,
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onPrimary,
+                    )
                     Spacer(Modifier.size(8.dp))
-                    Text(company.role)
+                    Text(
+                        company.role,
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onPrimary
+                    )
                     Spacer(Modifier.size(8.dp))
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -135,14 +146,18 @@ fun CompanyCard(
                             imageVector = Icons.Rounded.DateRange,
                             contentDescription = "기간",
                             modifier = Modifier.size(16.dp),
-                            colorFilter = ColorFilter.tint(Color.DarkGray)
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary)
                         )
                         Spacer(modifier = Modifier.size(8.dp))
-                        Text(company.period)
+                        Text(
+                            company.period,
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onPrimary
+                        )
                     }
                 }
                 Image(
-                    imageVector = if(expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                    imageVector = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
                     contentDescription = "펼치기",
                     modifier = Modifier.size(24.dp),
                     colorFilter = ColorFilter.tint(Color.Gray)
@@ -158,7 +173,7 @@ fun CompanyCard(
                     Spacer(Modifier.size(16.dp))
                     Text(
                         text = "프로젝트(${company.projects.size})",
-                        color = Color.DarkGray,
+                        color = MaterialTheme.colorScheme.onPrimary,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
                     )
@@ -182,7 +197,11 @@ fun ProjectCard(project: ProjectUiState) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xF9FAFBFF)
+            containerColor = MaterialTheme.colorScheme.primary,
+        ),
+        border = BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.tertiary
         ),
         shape = RoundedCornerShape(16.dp),
     ) {
@@ -191,11 +210,13 @@ fun ProjectCard(project: ProjectUiState) {
         ) {
             Text(
                 text = project.title,
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 16.sp
             )
             Spacer(Modifier.size(16.dp))
             Text(
                 text = project.description,
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 12.sp
             )
             Spacer(Modifier.size(8.dp))
@@ -208,11 +229,12 @@ fun ProjectCard(project: ProjectUiState) {
                     .height(160.dp)
                     .padding(start = 16.dp, end = 16.dp)
                     .clip(RoundedCornerShape(16.dp)),
-                placeholder = ColorPainter(Color(0xFFE0E0E0))
+                placeholder = ColorPainter(MaterialTheme.colorScheme.tertiary)
             )
             Spacer(Modifier.size(16.dp))
             Text(
                 text = "주요 성과",
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 14.sp
             )
             Spacer(Modifier.size(8.dp))
@@ -230,12 +252,16 @@ fun ProjectCard(project: ProjectUiState) {
                     Spacer(Modifier.size(8.dp))
                     Text(
                         text = it,
+                        color = MaterialTheme.colorScheme.onPrimary,
                         fontSize = 12.sp
                     )
                 }
             }
             Spacer(Modifier.size(16.dp))
-            Text("기술 스택")
+            Text(
+                "기술 스택",
+                color = MaterialTheme.colorScheme.onPrimary,
+            )
             Spacer(Modifier.size(8.dp))
 
             FlowRow(
@@ -257,25 +283,26 @@ fun TechTag(name: String) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFFE8EAFD))
+            .background(MaterialTheme.colorScheme.secondary)
             .padding(horizontal = 12.dp, vertical = 6.dp)
     ) {
         Text(
             text = name,
-            color = Color(0xFF3A45B4),
+            color = MaterialTheme.colorScheme.onSecondary,
             style = MaterialTheme.typography.bodySmall
         )
     }
 }
 
 
-
 @Preview(showBackground = true)
 @Composable
 fun CompanyPreview() {
-    var expanded by remember { mutableStateOf(false) }
-    CompanyCard (getCompanyUiStateMock(), expanded){
-        expanded = !expanded
+    JafarTheme {
+        var expanded by remember { mutableStateOf(false) }
+        CompanyCard(getCompanyUiStateMock(), expanded) {
+            expanded = !expanded
+        }
     }
 }
 
@@ -283,36 +310,40 @@ fun CompanyPreview() {
 @Preview(showBackground = true)
 @Composable
 fun ExpandedCompanyPreview() {
-    var expanded by remember { mutableStateOf(true) }
-    CompanyCard (getCompanyUiStateMock(), expanded){
-        expanded = !expanded
+    JafarTheme {
+        var expanded by remember { mutableStateOf(true) }
+        CompanyCard(getCompanyUiStateMock(), expanded) {
+            expanded = !expanded
+        }
     }
 }
-
 
 
 @Preview(showBackground = true)
 @Composable
 fun ProjectPreview() {
-    ProjectUiState(
-        1L,
-        "전사 디자인 시스템 구축",
-        "회사 전체에서 사용할 수 있는 통합 디자인 시스템과 컴포넌트 라이브러리를 구축했습니다. 재사용 가능한 컴포넌트를 개발하여 개발 속도를 향상시켰습니다",
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
-        listOf("개발 시간 40% 단축", "디자인 일관성 95% 달성"),
-        listOf("kotlin", "Android")
-    ).let {
-        ProjectCard(it)
+    JafarTheme {
+        ProjectUiState(
+            1L,
+            "전사 디자인 시스템 구축",
+            "회사 전체에서 사용할 수 있는 통합 디자인 시스템과 컴포넌트 라이브러리를 구축했습니다. 재사용 가능한 컴포넌트를 개발하여 개발 속도를 향상시켰습니다",
+            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
+            listOf("개발 시간 40% 단축", "디자인 일관성 95% 달성"),
+            listOf("kotlin", "Android")
+        ).let {
+            ProjectCard(it)
+        }
     }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun CareerPreview(){
-    CareerScreen()
+fun CareerPreview() {
+    JafarTheme {
+        CareerScreen()
+    }
 }
-
 
 
 private fun getCompanyUiStateMock() = CompanyUiState(
