@@ -75,6 +75,8 @@ dependencies {
     implementation(libs.androidx.material3.window.sizeclass)
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.dataStore.preferences)
+    implementation(libs.androidx.appcompat)
+
     implementation(libs.coil.compose)
 
     implementation(libs.hilt.android)
