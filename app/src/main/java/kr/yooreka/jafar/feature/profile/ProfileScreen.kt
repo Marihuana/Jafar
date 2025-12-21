@@ -244,20 +244,12 @@ fun ContactItem(
             .clickable(onClick = onItemClicked),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .background(iconBackgroundColor),
-            contentAlignment = Alignment.Center
-        ) {
-            ContactIcon(
-                iconRes = iconRes,
-                iconTintColor = iconTintColor,
-                iconBackgroundColor = iconBackgroundColor,
-                contentDescription = label,
-            )
-        }
+        ContactIcon(
+            iconRes = iconRes,
+            iconTintColor = iconTintColor,
+            iconBackgroundColor = iconBackgroundColor,
+            contentDescription = label,
+        )
 
         Spacer(modifier = Modifier.width(16.dp))
 
