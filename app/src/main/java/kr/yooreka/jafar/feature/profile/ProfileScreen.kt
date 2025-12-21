@@ -46,17 +46,18 @@ import kr.yooreka.jafar.ui.theme.JafarTheme
 
 @Composable
 fun ProfileScreen(
-    uiState: ProfileUiState = ProfileUiState(isLoading = true),
-    onMailClicked: () -> Unit = {},
-    onLinkedinClicked: () -> Unit = {},
-    onGithubClicked: () -> Unit = {}
+    uiState: ProfileUiState,
+    onMailClicked: () -> Unit,
+    onLinkedinClicked: () -> Unit,
+    onGithubClicked: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val aboutMe = uiState.aboutMe
     val contact = uiState.contact
     val introduce = uiState.introduce
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
@@ -77,10 +78,11 @@ fun ProfileScreen(
 
 @Composable
 fun ProfileCard(
-    state: AboutMeUIState = AboutMeUIState()
+    state: AboutMeUIState,
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primary,
         ),
@@ -145,13 +147,14 @@ fun ProfileCard(
 
 @Composable
 fun ContactCard(
-    state: ContactUIState = ContactUIState(),
-    onMailClicked: () -> Unit = {},
-    onLinkedinClicked: () -> Unit = {},
-    onGithubClicked: () -> Unit = {}
+    state: ContactUIState,
+    onMailClicked: () -> Unit,
+    onLinkedinClicked: () -> Unit,
+    onGithubClicked: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primary,
         ),
@@ -232,8 +235,8 @@ fun ContactItem(
     iconBackgroundColor: Color,
     label: String,
     value: String,
+    onItemClicked: () -> Unit,
     modifier: Modifier = Modifier,
-    onItemClicked: () -> Unit = {},
 ) {
     Row(
         modifier = modifier
@@ -279,10 +282,11 @@ fun ContactItem(
 
 @Composable
 fun IntroduceCard(
-    state: IntroduceUIState = IntroduceUIState()
+    state: IntroduceUIState,
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primary,
         ),
@@ -318,12 +322,7 @@ fun IntroduceCard(
 fun ProfilePreview() {
     JafarTheme() {
         ProfileCard(
-            state = AboutMeUIState(
-                "홍길동",
-                null,
-                "안드로이드",
-                listOf("java", "kotlin", "Node.js")
-            )
+            state = mockProfileUiState.aboutMe!!
         )
     }
 }
@@ -333,11 +332,10 @@ fun ProfilePreview() {
 fun ContactsPreview() {
     JafarTheme {
         ContactCard(
-            state = ContactUIState(
-                "sdlfkjsdflkj",
-                "sdlkfjsdsdf;lksd;lfksdlfjlksdjflkjsdfjlksdfjklkfjlksdfjlksdf",
-                "lsdkfjlksdfjlksdfjlk"
-            )
+            state = mockProfileUiState.contact!!,
+            onMailClicked = {},
+            onLinkedinClicked = {},
+            onGithubClicked = {}
         )
     }
 }
@@ -347,10 +345,9 @@ fun ContactsPreview() {
 fun IntroducePreview() {
     JafarTheme {
         IntroduceCard(
-            state = IntroduceUIState("동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세. 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세")
+            state = mockProfileUiState.introduce!!
         )
     }
-
 }
 
 
@@ -358,7 +355,12 @@ fun IntroducePreview() {
 @Composable
 fun HomePreview() {
     JafarTheme {
-        ProfileScreen()
+        ProfileScreen(
+            uiState = mockProfileUiState,
+            onMailClicked = {},
+            onLinkedinClicked = {},
+            onGithubClicked = {}
+        )
     }
 }
 
@@ -367,6 +369,29 @@ fun HomePreview() {
 @Composable
 fun HomePreviewDark() {
     JafarTheme(darkTheme = true) {
-        ProfileScreen()
+        ProfileScreen(
+            uiState = mockProfileUiState,
+            onMailClicked = {},
+            onLinkedinClicked = {},
+            onGithubClicked = {}
+        )
     }
 }
+
+private val mockProfileUiState = ProfileUiState(
+    aboutMe = AboutMeUIState(
+        "홍길동",
+        null,
+        "안드로이드",
+        listOf("java", "kotlin", "Node.js")
+    ),
+    contact = ContactUIState(
+        "abc@def.com",
+        "https://www.linkedin.com/in/jacob-yoo-a3593a21b/",
+        "https://github.com/jacob-yoo"
+    ),
+    introduce = IntroduceUIState(
+        "인사 하네요 근심없게 나 아름다운 방식으로 무딘 목소리와 어설픈 자국들 화려하게 장식해줘요 그대 춤을 추는 나무 같아요 그 안에 투박한 음악은 나예요 네 곁에만 움츠린 두려움들도 애틋한 그림이 되겠죠 그럼 돼요\n" +
+                "웃어 줄래요 사진처럼 수줍은 맘이 다 녹아내리게 무력한 걸음과 혼잡한 TV 속 세상없이 또 울기도 해요 그대 춤을 추는 나무 같아요 그 안에 투박한 음악은 나예요 네 곁에만 움츠린 두려움들도 애틋한 그림이 되겠죠 그럼 돼요"
+    )
+)
