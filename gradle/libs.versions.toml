@@ -16,6 +16,7 @@ composeBom = "2025.12.00"
 ksp = "2.3.1"
 room = "2.8.4"
 kotlinxCoroutines = "1.10.2"
+dataStore = "1.2.0"
 
 [libraries]
 androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayoutCompose" }
@@ -46,6 +47,7 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

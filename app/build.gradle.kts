@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.material3.window.sizeclass)
     implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.androidx.dataStore.preferences)
     implementation(libs.coil.compose)
 
     implementation(libs.hilt.android)
