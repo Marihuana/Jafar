@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Jafar</string>
+
+    <string name="nav_profile">ホーム</string>
+    <string name="nav_career">経歴</string>
+    <string name="nav_portfolio">ポートフォリオ</string>
+    <string name="nav_setting">設定</string>
+
+    <string name="profile_title">プロフィール</string>
+    <string name="profile_img_description">プロフィール画像</string>
+
+    <string name="contact_title">連絡先</string>
+    <string name="contact_mail">メール</string>
+    <string name="contact_github">GitHub</string>
+    <string name="contact_linkedin">LinkedIn</string>
+
+    <string name="introduce_title">自己紹介</string>
+
+    <string name="setting_title">設定</string>
+    <string name="setting_subtitle">アプリの環境設定とサブスクリプション管理</string>
+
+    <string name="setting_premium_title">プレミアムにアップグレード</string>
+    <string name="setting_premium_desc">広告の削除と追加機能</string>
+    <string name="setting_premium_btn">900ウォンで広告を削除</string>
+
+    <string name="setting_display">ディスプレイ</string>
+
+    <string name="setting_dark_mode">ダークモード</string>
+    <string name="setting_dark_mode_light">ライトテーマを使用</string>
+    <string name="setting_dark_mode_dark">ダークテーマを使用</string>
+
+    <string name="setting_font_scale">フォントサイズ</string>
+    <string name="setting_font_scale_small">小</string>
+    <string name="setting_font_scale_medium">中</string>
+    <string name="setting_font_scale_large">大</string>
+
+    <string name="setting_font_scale_dialog_title">フォントサイズを選択</string>
+    <string name="setting_font_scale_dialog_subtitle">
+        読みやすいフォントサイズを選択してください
+    </string>
+
+    <string name="setting_language">言語</string>
+    <string name="setting_language_kr">韓国語</string>
+    <string name="setting_language_en">英語</string>
+    <string name="setting_language_jp">日本語</string>
+
+    <string name="setting_language_dialog_title">言語を選択</string>
+    <string name="setting_language_dialog_subtitle">
+        アプリで使用する言語を選択してください
+    </string>
+
+    <string name="setting_version">ポートフォリオアプリ</string>
+    <string name="setting_copy_right">© 2025 All rights reserved</string>
+
+    <string name="setting_banner_holder_title">広告</string>
+    <string name="setting_banner_holder_desc">
+        プレミアムで広告なしで利用
+    </string>
+    <string name="setting_banner_holder_btn">アップグレード</string>
+</resources>
