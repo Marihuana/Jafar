@@ -308,9 +308,9 @@ fun IntroduceCard(
 @Composable
 fun ProfilePreview() {
     JafarTheme {
-        ProfileCard(
-            state = mockProfileUiState.aboutMe!!
-        )
+        mockProfileUiState.aboutMe?.let {
+            ProfileCard(state = it)
+        }
     }
 }
 
@@ -318,12 +318,14 @@ fun ProfilePreview() {
 @Composable
 fun ContactsPreview() {
     JafarTheme {
-        ContactCard(
-            state = mockProfileUiState.contact!!,
-            onMailClicked = {},
-            onLinkedinClicked = {},
-            onGithubClicked = {}
-        )
+        mockProfileUiState.contact?.let {
+            ContactCard(
+                state = it,
+                onMailClicked = {},
+                onLinkedinClicked = {},
+                onGithubClicked = {}
+            )
+        }
     }
 }
 
@@ -331,9 +333,9 @@ fun ContactsPreview() {
 @Composable
 fun IntroducePreview() {
     JafarTheme {
-        IntroduceCard(
-            state = mockProfileUiState.introduce!!
-        )
+        mockProfileUiState.introduce?.let {
+            IntroduceCard(state = it)
+        }
     }
 }
 
