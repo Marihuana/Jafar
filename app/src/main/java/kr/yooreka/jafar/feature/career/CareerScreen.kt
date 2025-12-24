@@ -91,11 +91,11 @@ fun CompanyCard(
         modifier = modifier
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primary,
+            containerColor = MaterialTheme.colorScheme.surface,
         ),
         border = BorderStroke(
             width = 1.dp,
-            color = MaterialTheme.colorScheme.tertiary
+            color = MaterialTheme.colorScheme.outline
         ),
         shape = RoundedCornerShape(16.dp),
         onClick = onClick
@@ -114,17 +114,15 @@ fun CompanyCard(
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                //R.drawable.ic_company를 이용해 아이콘을 만들어줘
-                //배경은 파란색 둥근 모서리의 사각형으로 tint는 검정색으로
                 Image(
                     painter = painterResource(id = R.drawable.ic_company),
-                    contentDescription = "회사 아이콘",
+                    contentDescription = stringResource(R.string.career_company_icon_cd),
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(8.dp))
                         .background(MaterialTheme.colorScheme.tertiary)
                         .padding(8.dp),
-                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary)
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
                 )
                 Spacer(Modifier.size(16.dp))
 
@@ -134,51 +132,56 @@ fun CompanyCard(
                     Text(
                         company.name,
                         style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = MaterialTheme.colorScheme.onSurface,
                     )
                     Spacer(Modifier.size(8.dp))
                     Text(
                         company.role,
                         style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onPrimary
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                     Spacer(Modifier.size(8.dp))
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
                             imageVector = Icons.Rounded.DateRange,
-                            contentDescription = "기간",
+                            contentDescription = stringResource(R.string.career_period_icon_cd),
                             modifier = Modifier.size(16.dp),
-                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary)
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
                         )
                         Spacer(modifier = Modifier.size(8.dp))
                         Text(
                             company.period,
                             style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onPrimary
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 }
                 Image(
                     imageVector = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
-                    contentDescription = "펼치기",
+                    contentDescription = if (expanded) stringResource(R.string.career_collapse_project_cd) else stringResource(
+                        R.string.career_expand_project_cd
+                    ),
                     modifier = Modifier.size(24.dp),
-                    colorFilter = ColorFilter.tint(Color.Gray)
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
                 )
             }
 
             AnimatedVisibility(expanded) {
-                HorizontalDivider(color = Color(0xFFE0E0E0))
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                 Column(
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
                 ) {
                     Spacer(Modifier.size(16.dp))
                     Text(
-                        text = "프로젝트(${company.projects.size})",
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
+                        text = pluralStringResource(
+                            id = R.plurals.career_projects_count,
+                            count = company.projects.size,
+                            company.projects.size
+                        ),
+                        color = MaterialTheme.colorScheme.onSurface,
+                        style = MaterialTheme.typography.titleSmall
                     )
                     Spacer(Modifier.size(12.dp))
                     Column(
@@ -188,11 +191,11 @@ fun CompanyCard(
                             ProjectCard(project)
                         }
                     }
+                    Spacer(Modifier.size(16.dp))
                 }
             }
         }
     }
-
 }
 
 @Composable
@@ -203,11 +206,11 @@ fun ProjectCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primary,
+            containerColor = MaterialTheme.colorScheme.surface,
         ),
         border = BorderStroke(
             width = 1.dp,
-            color = MaterialTheme.colorScheme.tertiary
+            color = MaterialTheme.colorScheme.outline
         ),
         shape = RoundedCornerShape(16.dp),
     ) {
@@ -216,20 +219,23 @@ fun ProjectCard(
         ) {
             Text(
                 text = project.title,
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 16.sp
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.titleMedium
             )
             Spacer(Modifier.size(16.dp))
             Text(
                 text = project.description,
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 12.sp
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.bodyMedium
             )
             Spacer(Modifier.size(8.dp))
 
             AsyncImage(
-                model = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfWSwdaVcnaHBS0ipb4jjho-6kUQ-OS3tZA&s",
-                contentDescription = "${project.title}의 이미지",
+                model = project.imageUrl,
+                contentDescription = stringResource(
+                    R.string.career_project_image_cd,
+                    project.title
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(160.dp)
@@ -239,9 +245,9 @@ fun ProjectCard(
             )
             Spacer(Modifier.size(16.dp))
             Text(
-                text = "주요 성과",
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 14.sp
+                text = stringResource(R.string.career_performance),
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.titleSmall
             )
             Spacer(Modifier.size(8.dp))
             project.performance.forEach {
@@ -253,20 +259,21 @@ fun ProjectCard(
                         modifier = Modifier
                             .size(4.dp)
                             .clip(CircleShape)
-                            .background(Color(0xFF4978F2))
+                            .background(MaterialTheme.colorScheme.primary)
                     )
                     Spacer(Modifier.size(8.dp))
                     Text(
                         text = it,
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        fontSize = 12.sp
+                        color = MaterialTheme.colorScheme.onSurface,
+                        style = MaterialTheme.typography.bodyMedium
                     )
                 }
             }
             Spacer(Modifier.size(16.dp))
             Text(
-                "기술 스택",
-                color = MaterialTheme.colorScheme.onPrimary,
+                text = stringResource(R.string.career_tech_stack),
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.titleSmall
             )
             Spacer(Modifier.size(8.dp))
 
