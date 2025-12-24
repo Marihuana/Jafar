@@ -5,7 +5,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,15 +32,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import kr.yooreka.jafar.R
+import kr.yooreka.jafar.ui.theme.GithubIconBackground
+import kr.yooreka.jafar.ui.theme.GithubIconTint
 import kr.yooreka.jafar.ui.theme.JafarTheme
+import kr.yooreka.jafar.ui.theme.LinkedinIconBackground
+import kr.yooreka.jafar.ui.theme.LinkedinIconTint
+import kr.yooreka.jafar.ui.theme.MailIconBackground
+import kr.yooreka.jafar.ui.theme.MailIconTint
 
 
 @Composable
@@ -59,6 +62,7 @@ fun ProfileScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface)
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
@@ -111,17 +115,13 @@ fun ProfileCard(
             Text(
                 text = state.name,
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 16.sp,
-                fontFamily = FontFamily.Monospace,
-                fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
             )
 
             Text(
                 text = state.position,
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 15.sp,
-                fontFamily = FontFamily.Monospace,
-                fontWeight = FontWeight.Medium
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium)
             )
 
             Row {
@@ -169,16 +169,14 @@ fun ContactCard(
             Text(
                 stringResource(R.string.contact_title),
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 15.sp,
-                fontFamily = FontFamily.Monospace,
-                fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
             )
             Spacer(Modifier.height(20.dp))
 
             ContactItem(
                 iconRes = R.drawable.ic_mail,
-                iconTintColor = Color(0xFF1A65FC),
-                iconBackgroundColor = Color(0xFFDAEBFF),
+                iconTintColor = MailIconTint,
+                iconBackgroundColor = MailIconBackground,
                 label = stringResource(R.string.contact_mail),
                 value = state.mail,
                 onItemClicked = onMailClicked
@@ -188,8 +186,8 @@ fun ContactCard(
 
             ContactItem(
                 iconRes = R.drawable.ic_github,
-                iconTintColor = Color.White,
-                iconBackgroundColor = Color.Black,
+                iconTintColor = GithubIconTint,
+                iconBackgroundColor = GithubIconBackground,
                 label = stringResource(R.string.contact_github),
                 value = state.github,
                 onItemClicked = onGithubClicked
@@ -199,8 +197,8 @@ fun ContactCard(
 
             ContactItem(
                 iconRes = R.drawable.ic_linkedin,
-                iconTintColor = Color.White,
-                iconBackgroundColor = Color.Blue,
+                iconTintColor = LinkedinIconTint,
+                iconBackgroundColor = LinkedinIconBackground,
                 label = stringResource(R.string.contact_linkedin),
                 value = state.linkedin,
                 onItemClicked = onLinkedinClicked
@@ -293,15 +291,12 @@ fun IntroduceCard(
             Text(
                 text = stringResource(R.string.introduce_title),
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 15.sp,
-                fontFamily = FontFamily.Monospace,
-                fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
             )
             Spacer(Modifier.height(20.dp))
             Text(
                 text = state.description,
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 14.sp,
                 style = MaterialTheme.typography.bodyMedium
             )
         }
@@ -312,7 +307,7 @@ fun IntroduceCard(
 @Preview(showBackground = true)
 @Composable
 fun ProfilePreview() {
-    JafarTheme() {
+    JafarTheme {
         ProfileCard(
             state = mockProfileUiState.aboutMe!!
         )
@@ -345,7 +340,7 @@ fun IntroducePreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun HomePreview() {
+fun ProfileScreenPreview() {
     JafarTheme {
         ProfileScreen(
             uiState = mockProfileUiState,
@@ -359,7 +354,7 @@ fun HomePreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun HomePreviewDark() {
+fun ProfileScreenPreviewDark() {
     JafarTheme(darkTheme = true) {
         ProfileScreen(
             uiState = mockProfileUiState,
