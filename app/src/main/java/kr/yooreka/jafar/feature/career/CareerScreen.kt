@@ -54,14 +54,16 @@ import kr.yooreka.jafar.ui.theme.JafarTheme
 
 @Composable
 fun CareerScreen(
-    uiState: CareerUiState = CareerUiState(isLoading = true),
+    uiState: CareerUiState,
+    modifier: Modifier = Modifier,
+    onCompanyClick: (Long) -> Unit,
 ) {
     val companies = uiState.companies
     val selectedCompanyId = rememberSaveable { mutableStateListOf(companies.firstOrNull() ?: 0L) }
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier.padding(16.dp)
+        modifier = modifier.padding(16.dp)
     ) {
         items(companies) { company ->
             CompanyCard(
@@ -82,10 +84,11 @@ fun CareerScreen(
 fun CompanyCard(
     company: CompanyUiState,
     expanded: Boolean,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primary,
@@ -193,9 +196,12 @@ fun CompanyCard(
 }
 
 @Composable
-fun ProjectCard(project: ProjectUiState) {
+fun ProjectCard(
+    project: ProjectUiState,
+    modifier: Modifier = Modifier
+) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primary,
         ),
@@ -279,9 +285,12 @@ fun ProjectCard(project: ProjectUiState) {
 }
 
 @Composable
-fun TechTag(name: String) {
+fun TechTag(
+    name: String,
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .clip(RoundedCornerShape(16.dp))
             .background(MaterialTheme.colorScheme.secondary)
             .padding(horizontal = 12.dp, vertical = 6.dp)
