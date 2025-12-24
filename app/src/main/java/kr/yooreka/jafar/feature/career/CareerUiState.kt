@@ -13,7 +13,7 @@ data class CareerUiState(
     val isLoading: Boolean = false,
     val errorMessage: String? = null,
     val companies: List<CompanyUiState> = emptyList(),
-    val selectedCompanyId: String? = null
+    val expandedCompanyIds: Set<Long> = emptySet()
 )
 
 data class CompanyUiState(
@@ -81,7 +81,7 @@ data class ProjectUiState(
     val skills: List<String>
 )
 
-fun ProjectVO.toUIState() : ProjectUiState =
+fun ProjectVO.toUIState(): ProjectUiState =
     ProjectUiState(
         id = id,
         title = name,

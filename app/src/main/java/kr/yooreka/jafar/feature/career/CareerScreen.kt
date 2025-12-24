@@ -32,22 +32,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import kr.yooreka.jafar.R
 import kr.yooreka.jafar.ui.theme.JafarTheme
@@ -58,23 +55,15 @@ fun CareerScreen(
     modifier: Modifier = Modifier,
     onCompanyClick: (Long) -> Unit,
 ) {
-    val companies = uiState.companies
-    val selectedCompanyId = rememberSaveable { mutableStateListOf(companies.firstOrNull() ?: 0L) }
-
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.padding(16.dp)
     ) {
-        items(companies) { company ->
+        items(uiState.companies) { company ->
             CompanyCard(
                 company = company,
-                expanded = selectedCompanyId.contains(company.id),
-                onClick = {
-                    if (selectedCompanyId.contains(company.id)) {
-                        selectedCompanyId.remove(company.id)
-                    } else
-                        selectedCompanyId.add(company.id)
-                }
+                expanded = uiState.expandedCompanyIds.contains(company.id),
+                onClick = { onCompanyClick(company.id) }
             )
         }
     }
