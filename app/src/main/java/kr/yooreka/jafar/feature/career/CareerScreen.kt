@@ -287,8 +287,6 @@ fun ProjectCard(
             }
         }
     }
-
-
 }
 
 @Composable
@@ -315,9 +313,11 @@ fun TechTag(
 @Composable
 fun CompanyPreview() {
     JafarTheme {
-        var expanded by remember { mutableStateOf(false) }
-        CompanyCard(getCompanyUiStateMock(), expanded) {
-            expanded = !expanded
+        careerUiStateMock.companies.firstOrNull()?.let {
+            var expanded by remember { mutableStateOf(false) }
+            CompanyCard(it, expanded) {
+                expanded = !expanded
+            }
         }
     }
 }
@@ -327,9 +327,11 @@ fun CompanyPreview() {
 @Composable
 fun ExpandedCompanyPreview() {
     JafarTheme {
-        var expanded by remember { mutableStateOf(true) }
-        CompanyCard(getCompanyUiStateMock(), expanded) {
-            expanded = !expanded
+        careerUiStateMock.companies.firstOrNull()?.let {
+            var expanded by remember { mutableStateOf(true) }
+            CompanyCard(it, expanded) {
+                expanded = !expanded
+            }
         }
     }
 }
@@ -339,14 +341,7 @@ fun ExpandedCompanyPreview() {
 @Composable
 fun ProjectPreview() {
     JafarTheme {
-        ProjectUiState(
-            1L,
-            "전사 디자인 시스템 구축",
-            "회사 전체에서 사용할 수 있는 통합 디자인 시스템과 컴포넌트 라이브러리를 구축했습니다. 재사용 가능한 컴포넌트를 개발하여 개발 속도를 향상시켰습니다",
-            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
-            listOf("개발 시간 40% 단축", "디자인 일관성 95% 달성"),
-            listOf("kotlin", "Android")
-        ).let {
+        careerUiStateMock.companies.firstOrNull()?.projects?.firstOrNull()?.let {
             ProjectCard(it)
         }
     }
@@ -355,40 +350,53 @@ fun ProjectPreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun CareerPreview() {
+fun CareerScreenPreviewLight() {
     JafarTheme {
-        CareerScreen()
+        CareerScreen(
+            uiState = careerUiStateMock,
+            onCompanyClick = {}
+        )
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun CareerScreenPreviewDark() {
+    JafarTheme(
+        darkTheme = true
+    ) {
+        CareerScreen(
+            uiState = careerUiStateMock,
+            onCompanyClick = {}
+        )
+    }
+}
 
-private fun getCompanyUiStateMock() = CompanyUiState(
-    1,
-    "11번가",
-    "2024.11.20 ~ 현재",
-    "안드로이드 개발자",
-    listOf(
-        ProjectUiState(
-            1L,
-            "전사 디자인 시스템 구축",
-            "회사 전체에서 사용할 수 있는 통합 디자인 시스템과 컴포넌트 라이브러리를 구축했습니다. 재사용 가능한 컴포넌트를 개발하여 개발 속도를 향상시켰습니다",
-            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
-            listOf("개발 시간 40% 단축", "디자인 일관성 95% 달성"),
-            listOf("kotlin", "Android")
-        ),
-        ProjectUiState(
-            1L,
-            "전사 디자인 시스템 구축",
-            "회사 전체에서 사용할 수 있는 통합 디자인 시스템과 컴포넌트 라이브러리를 구축했습니다. 재사용 가능한 컴포넌트를 개발하여 개발 속도를 향상시켰습니다",
-            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
-            listOf("개발 시간 40% 단축", "디자인 일관성 95% 달성"),
-            listOf("kotlin", "Android")
+private val careerUiStateMock = CareerUiState(
+    companies = listOf(
+        CompanyUiState(
+            1,
+            "11번가",
+            "2024.11.20 ~ 현재",
+            "안드로이드 개발자",
+            listOf(
+                ProjectUiState(
+                    1L,
+                    "전사 디자인 시스템 구축",
+                    "회사 전체에서 사용할 수 있는 통합 디자인 시스템과 컴포넌트 라이브러리를 구축했습니다. 재사용 가능한 컴포넌트를 개발하여 개발 속도를 향상시켰습니다",
+                    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
+                    listOf("개발 시간 40% 단축", "디자인 일관성 95% 달성"),
+                    listOf("kotlin", "Android")
+                ),
+                ProjectUiState(
+                    1L,
+                    "전사 디자인 시스템 구축",
+                    "회사 전체에서 사용할 수 있는 통합 디자인 시스템과 컴포넌트 라이브러리를 구축했습니다. 재사용 가능한 컴포넌트를 개발하여 개발 속도를 향상시켰습니다",
+                    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
+                    listOf("개발 시간 40% 단축", "디자인 일관성 95% 달성"),
+                    listOf("kotlin", "Android")
+                )
+            )
         )
     )
 )
-
-@Preview(showBackground = true)
-@Composable
-fun CareerScreenPreview() {
-    CareerScreen()
-}
