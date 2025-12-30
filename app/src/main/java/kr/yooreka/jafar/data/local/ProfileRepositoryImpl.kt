@@ -17,7 +17,7 @@ class ProfileRepositoryImpl @Inject constructor() : ProfileRepository {
 
     private fun getMockProfile() = ProfileDTO(
         name = "유재홍",
-        imgUrl = "https://media.licdn.com/dms/image/v2/D5603AQFb425WKJ2bLA/profile-displayphoto-crop_800_800/B56Zr.Zg4ULAAI-/0/1765204693408?e=1766620800&v=beta&t=DOPnDEI72zcyHJNnTHRSuVTHxTtjqwVTgx3GLWL7TTM",
+        imgUrl = "https://media.licdn.com/dms/image/v2/D5603AQFb425WKJ2bLA/profile-displayphoto-crop_800_800/B56Zr.Zg4ULAAI-/0/1765204693408?e=1768435200&v=beta&t=LCIt5N6WhtOigEDE1NzhvUREQDr8cSn28nKCuBoz5ak",
         position = "Android Developer",
         skills = listOf("Java", "Kotlin", "Android"),
         description = "10년간 안드로이드 개발자로서 스타트업부터 대기업, 신규 프로젝트 런칭부터 MAU 900만 이상의 대형 서비스 운영까지 다양한 환경에서, 폭 넓은 경험을 쌓았습니다.\n" +

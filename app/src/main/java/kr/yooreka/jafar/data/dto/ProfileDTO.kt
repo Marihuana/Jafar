@@ -4,7 +4,7 @@ import kr.yooreka.jafar.domain.model.ProfileVO
 
 data class ProfileDTO(
     val name: String,
-    val imgUrl: String,
+    val imgUrl: String?,
     val position: String,
     val skills: List<String>,
     val description: String,

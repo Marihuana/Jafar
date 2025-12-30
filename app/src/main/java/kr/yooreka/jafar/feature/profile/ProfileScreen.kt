@@ -2,6 +2,7 @@ package kr.yooreka.jafar.feature.profile
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -107,11 +108,12 @@ fun ProfileCard(
                 model = state.imgUrl,
                 contentDescription = stringResource(R.string.profile_img_description),
                 contentScale = ContentScale.Fit,
+                error = painterResource(R.drawable.img_profile),
                 modifier = Modifier
                     .clip(CircleShape)
                     .size(80.dp),
-                placeholder = painterResource(R.drawable.img_profile)
             )
+
             Text(
                 text = state.name,
                 color = MaterialTheme.colorScheme.onPrimary,
