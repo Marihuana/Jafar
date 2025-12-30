@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kr.yooreka.jafar.data.local.CareerRepositoryImpl
-import kr.yooreka.jafar.data.local.PortfolioRepositoryImpl
+import kr.yooreka.jafar.data.repository.PortfolioRepositoryImpl
 import kr.yooreka.jafar.data.local.ProfileRepositoryImpl
 import kr.yooreka.jafar.data.repository.AppInfoRepositoryImpl
 import kr.yooreka.jafar.data.repository.DisplayRepositoryImpl
