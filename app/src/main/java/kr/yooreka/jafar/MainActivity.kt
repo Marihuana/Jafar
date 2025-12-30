@@ -18,6 +18,8 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
@@ -26,6 +28,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -101,10 +104,13 @@ fun JafaScreen(
     currentDestination: NavDestination?,
     widthSizeClass: WindowWidthSizeClass
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
+
     when (widthSizeClass) {
         WindowWidthSizeClass.Compact -> {
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
+                snackbarHost = { SnackbarHost(snackbarHostState) },
                 bottomBar = {
                     JafarBottomBar(
                         currentDestination = currentDestination,
@@ -122,6 +128,7 @@ fun JafaScreen(
             ) { innerPadding ->
                 JafarNavHost(
                     navController = navController,
+                    snackbarHostState = snackbarHostState,
                     modifier = Modifier.padding(innerPadding)
                 )
             }
@@ -130,7 +137,8 @@ fun JafaScreen(
         WindowWidthSizeClass.Medium,
         WindowWidthSizeClass.Expanded -> {
             Scaffold(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                snackbarHost = { SnackbarHost(snackbarHostState) },
             ) { innerPadding ->
                 Row(
                     modifier = Modifier
@@ -151,6 +159,7 @@ fun JafaScreen(
                     )
                     JafarNavHost(
                         navController = navController,
+                        snackbarHostState = snackbarHostState,
                         modifier = Modifier.weight(1f)
                     )
                 }
