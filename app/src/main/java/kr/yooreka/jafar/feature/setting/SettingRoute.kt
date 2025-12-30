@@ -9,9 +9,13 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 fun SettingRoute(
     viewModel: SettingViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.settingUiState.collectAsState()
 
     SettingScreen(
-        uiState = uiState
+        uiState = uiState,
+        onDarkModeToggle = viewModel::onDarkModeToggle,
+        onFontSizeClick = viewModel::onFontSizeClick,
+        onLanguageClick = viewModel::onLanguageClick,
+        onUpgradeClick = viewModel::onUpgradeClick
     )
 }

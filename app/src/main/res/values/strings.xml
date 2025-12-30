@@ -7,27 +7,101 @@
     <string name="nav_setting">설정</string>
 
     <string name="profile_title">프로필</string>
-    <string name="profile_name">유재홍</string>
-    <string name="profile_position">Android Developer</string>
-    <string-array name="profile_skill_tags">
-        <item>Java</item>
-        <item>Kotlin</item>
-        <item>Android</item>
-    </string-array>
+    <string name="profile_img_description">프로필 사진</string>
 
     <string name="contact_title">연락처</string>
     <string name="contact_mail">이메일</string>
-    <string name="contact_mail_value">bracket0723@gmail.com</string>
     <string name="contact_github">GitHub</string>
-    <string name="contact_github_value">bracket0723@gmail.com</string>
     <string name="contact_linkedin">LinkedIn</string>
-    <string name="contact_linkedin_value">bracket0723@gmail.com</string>
 
-    <string name="summary_title">이력서 요약</string>
-    <string name="summary_introduce">소개</string>
-    <string name="summary_about_me">
-        10년간 안드로이드 개발자로서 스타트업부터 대기업, 신규 프로젝트 런칭부터 MAU 900만 이상의 대형 서비스 운영까지 다양한 환경에서, 폭 넓은 경험을 쌓았습니다.
-        협업 과정에서 상대방을 배려하며 팀의 성과를 극대화하는 것을 중요시하며, 코드 품질 개선과최신 기술 도입을 통해 지속적으로 성장하고 있습니다.
-        사용자에게 가치를 전달하는 개발자로서 앞으로도 도전과 배움을 이어가고자 합니다.
+    <string name="introduce_title">자기 소개</string>
+
+    <plurals name="career_projects_count">
+        <item quantity="one">프로젝트(%1$d)</item>
+        <item quantity="other">프로젝트(%1$d)</item>
+    </plurals>
+    <string name="career_performance">주요 성과</string>
+    <string name="career_tech_stack">기술 스택</string>
+    //content description
+    <string name="career_company_icon_cd">회사</string>
+    <string name="career_period_icon_cd">기간</string>
+    <string name="career_collapse_project_cd">프로젝트 접기</string>
+    <string name="career_expand_project_cd">프로젝트 펼치기</string>
+    <string name="career_project_image_cd">%s의 이미지</string>
+
+    <!-- Portfolio: Header -->
+    <string name="portfolio_title">포트폴리오</string>
+    <string name="portfolio_subtitle">다양한 프로젝트와 기술 스택</string>
+
+    <!-- Portfolio: Featured section -->
+    <string name="portfolio_featured_badge">Featured</string>
+    <string name="portfolio_featured_title">프로젝트 쇼케이스</string>
+    <string name="portfolio_featured_description">
+        다양한 프로젝트를 통해 축적한 기술 역량을 확인하세요. 지도, 스트리밍 등 현재 활성화된 프로젝트를 클릭하여 자세히 살펴보실 수 있습니다.
     </string>
+
+    <!-- Portfolio: Stats -->
+    <string name="portfolio_summary_projects_label">프로젝트</string>
+    <string name="portfolio_summary_tech_stack_label">기술 스택</string>
+    <string name="portfolio_summary_experience_label">경력</string>
+
+    <!-- Portfolio: Feature cards / chips -->
+    <string name="portfolio_chip_coming_soon">준비중</string>
+
+    <!-- Portfolio: Content descriptions -->
+    <string name="portfolio_cd_lock">잠금</string>
+    <string name="portfolio_cd_navigate">이동</string>
+
+    <!-- Portfolio: Summary formats -->
+    <string name="portfolio_summary_plus_format">%1$d+</string>
+
+    <!-- Portfolio: Summary plurals (years) -->
+    <plurals name="portfolio_summary_years">
+        <item quantity="one">%1$d년</item>
+        <item quantity="other">%1$d년</item>
+    </plurals>
+
+    <!-- Portfolio: Empty -->
+    <string name="portfolio_empty_title">표시할 프로젝트가 없어요</string>
+    <string name="portfolio_empty_description">추가되면 여기에서 보여줄게요.</string>
+
+    <!-- Portfolio: Project chip -->
+    <string name="portfolio_project_chip_coming_soon">준비중</string>
+
+    <string name="setting_title">설정</string>
+    <string name="setting_subtitle">앱 환경 설정 및 구독 관리</string>
+
+    <string name="setting_premium_title">프리미엄으로 업그레이드</string>
+    <string name="setting_premium_desc">광고 제거 및 추가 기능</string>
+    <string name="setting_premium_btn">900원으로 광고 제거하기</string>
+
+    <string name="setting_display">디스플레이</string>
+
+    <string name="setting_dark_mode">다크 모드</string>
+    <string name="setting_dark_mode_light">밝은 테마 사용</string>
+    <string name="setting_dark_mode_dark">어두운 테마 사용</string>
+
+    <string name="setting_font_scale">폰트 크기</string>
+    <string name="setting_font_scale_small">작게</string>
+    <string name="setting_font_scale_medium">보통</string>
+    <string name="setting_font_scale_large">크게</string>
+
+    <string name="setting_font_scale_dialog_title">폰트 크기 선택</string>
+    <string name="setting_font_scale_dialog_subtitle">읽기 편한 폰트 크기를 선택하세요</string>
+
+    <string name="setting_language">언어</string>
+    <string name="setting_language_kr">한국어</string>
+    <string name="setting_language_en">영어</string>
+    <string name="setting_language_jp">일본어</string>
+
+    <string name="setting_language_dialog_title">언어 선택</string>
+    <string name="setting_language_dialog_subtitle">앱에서 사용할 언어를 선택하세요</string>
+
+    <string name="setting_version">포트폴리오 앱</string>
+    <string name="setting_copy_right">© 2025 All rights reserved</string>
+
+    <string name="setting_banner_holder_title">광고</string>
+    <string name="setting_banner_holder_desc">프리미엄으로 광고 없이 사용하기</string>
+    <string name="setting_banner_holder_btn">업그레이드</string>
+
 </resources>
