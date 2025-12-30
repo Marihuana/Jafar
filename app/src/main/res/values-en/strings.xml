@@ -30,6 +30,45 @@
     <string name="career_expand_project_cd">Expand projects</string>
     <string name="career_project_image_cd">Image for %1$s</string>
 
+    <!-- Portfolio: Header -->
+    <string name="portfolio_title">Portfolio</string>
+    <string name="portfolio_subtitle">Projects and tech stack</string>
+
+    <!-- Portfolio: Featured section -->
+    <string name="portfolio_featured_badge">Featured</string>
+    <string name="portfolio_featured_title">Project showcase</string>
+    <string name="portfolio_featured_description">
+        Explore the skills I’ve built through various projects. Tap an active item such as Maps or Streaming to see the details.
+    </string>
+
+    <!-- Portfolio: Stats -->
+    <string name="portfolio_summary_projects_label">Projects</string>
+    <string name="portfolio_summary_tech_stack_label">Tech stack</string>
+    <string name="portfolio_summary_experience_label">Experience</string>
+
+    <!-- Portfolio: Feature cards / chips -->
+    <string name="portfolio_chip_coming_soon">Coming soon</string>
+
+    <!-- Portfolio: Content descriptions -->
+    <string name="portfolio_cd_lock">Locked</string>
+    <string name="portfolio_cd_navigate">Navigate</string>
+
+    <!-- Portfolio: Summary formats -->
+    <string name="portfolio_summary_plus_format">%1$d+</string>
+
+    <!-- Portfolio: Summary plurals (years) -->
+    <plurals name="portfolio_summary_years">
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
+
+    <!-- Portfolio: Empty -->
+    <string name="portfolio_empty_title">No projects to show</string>
+    <string name="portfolio_empty_description">They’ll appear here once added.</string>
+
+    <!-- Portfolio: Project chip -->
+    <string name="portfolio_project_chip_coming_soon">Coming soon</string>
+
     <string name="setting_title">Settings</string>
     <string name="setting_subtitle">App preferences and subscription</string>
 

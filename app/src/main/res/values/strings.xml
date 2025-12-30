@@ -29,6 +29,45 @@
     <string name="career_expand_project_cd">프로젝트 펼치기</string>
     <string name="career_project_image_cd">%s의 이미지</string>
 
+    <!-- Portfolio: Header -->
+    <string name="portfolio_title">포트폴리오</string>
+    <string name="portfolio_subtitle">다양한 프로젝트와 기술 스택</string>
+
+    <!-- Portfolio: Featured section -->
+    <string name="portfolio_featured_badge">Featured</string>
+    <string name="portfolio_featured_title">프로젝트 쇼케이스</string>
+    <string name="portfolio_featured_description">
+        다양한 프로젝트를 통해 축적한 기술 역량을 확인하세요. 지도, 스트리밍 등 현재 활성화된 프로젝트를 클릭하여 자세히 살펴보실 수 있습니다.
+    </string>
+
+    <!-- Portfolio: Stats -->
+    <string name="portfolio_summary_projects_label">프로젝트</string>
+    <string name="portfolio_summary_tech_stack_label">기술 스택</string>
+    <string name="portfolio_summary_experience_label">경력</string>
+
+    <!-- Portfolio: Feature cards / chips -->
+    <string name="portfolio_chip_coming_soon">준비중</string>
+
+    <!-- Portfolio: Content descriptions -->
+    <string name="portfolio_cd_lock">잠금</string>
+    <string name="portfolio_cd_navigate">이동</string>
+
+    <!-- Portfolio: Summary formats -->
+    <string name="portfolio_summary_plus_format">%1$d+</string>
+
+    <!-- Portfolio: Summary plurals (years) -->
+    <plurals name="portfolio_summary_years">
+        <item quantity="one">%1$d년</item>
+        <item quantity="other">%1$d년</item>
+    </plurals>
+
+    <!-- Portfolio: Empty -->
+    <string name="portfolio_empty_title">표시할 프로젝트가 없어요</string>
+    <string name="portfolio_empty_description">추가되면 여기에서 보여줄게요.</string>
+
+    <!-- Portfolio: Project chip -->
+    <string name="portfolio_project_chip_coming_soon">준비중</string>
+
     <string name="setting_title">설정</string>
     <string name="setting_subtitle">앱 환경 설정 및 구독 관리</string>
 

@@ -30,6 +30,45 @@
     <string name="career_expand_project_cd">プロジェクトを展開</string>
     <string name="career_project_image_cd">%1$sの画像</string>
 
+    <!-- Portfolio: Header -->
+    <string name="portfolio_title">ポートフォリオ</string>
+    <string name="portfolio_subtitle">プロジェクトと技術スタック</string>
+
+    <!-- Portfolio: Featured section -->
+    <string name="portfolio_featured_badge">Featured</string>
+    <string name="portfolio_featured_title">プロジェクトショーケース</string>
+    <string name="portfolio_featured_description">
+        さまざまなプロジェクトを通じて培った技術力をご覧ください。地図やストリーミングなど有効な項目をタップして詳細を確認できます。
+    </string>
+
+    <!-- Portfolio: Stats -->
+    <string name="portfolio_summary_projects_label">プロジェクト</string>
+    <string name="portfolio_summary_tech_stack_label">技術スタック</string>
+    <string name="portfolio_summary_experience_label">経験</string>
+
+    <!-- Portfolio: Feature cards / chips -->
+    <string name="portfolio_chip_coming_soon">準備中</string>
+
+    <!-- Portfolio: Content descriptions -->
+    <string name="portfolio_cd_lock">ロック</string>
+    <string name="portfolio_cd_navigate">移動</string>
+
+    <!-- Portfolio: Summary formats -->
+    <string name="portfolio_summary_plus_format">%1$d+</string>
+
+    <!-- Portfolio: Summary plurals (years) -->
+    <plurals name="portfolio_summary_years">
+        <item quantity="one">%1$d年</item>
+        <item quantity="other">%1$d年</item>
+    </plurals>
+
+    <!-- Portfolio: Empty -->
+    <string name="portfolio_empty_title">表示できるプロジェクトがありません</string>
+    <string name="portfolio_empty_description">追加されると、ここに表示されます。</string>
+
+    <!-- Portfolio: Project chip -->
+    <string name="portfolio_project_chip_coming_soon">準備中</string>
+
     <string name="setting_title">設定</string>
     <string name="setting_subtitle">アプリの環境設定とサブスクリプション管理</string>
 
