@@ -39,3 +39,6 @@ val GithubIconBackground = Color(0xFF000000)
 
 val LinkedinIconTint = Color(0xFFFFFFFF)
 val LinkedinIconBackground = Color(0xFF0000FF)
+
+val PortfolioGradientStart = Color(0xFF915BE5)
+val PortfolioGradientEnd = Color(0xFFDA774C)
